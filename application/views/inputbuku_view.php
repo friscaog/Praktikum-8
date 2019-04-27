@@ -2,7 +2,9 @@
     <head>
         <title>Tambah Buku</title>
     </head>
-    <body><center> <h2>Tambah Buku</h2>
+    <body><center> 
+        <a href="<?php echo base_url().'showbuku';?>" style="float: left;"> &laquo; Back</a>
+        <h2>Tambah Buku</h2>
         <form action= "<?php echo base_url().'showbuku/tambah' ?>" method="post">
             <table>
                 <tr>
