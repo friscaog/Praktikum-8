@@ -3,6 +3,7 @@
     <title>Selamat Datang Pegawai</title>
   </head>
   <body>
+    <a href="<?php echo base_url().'auth/logout';?>">LOG OUT</a>
     <h2><?php echo $title ?></h2>
     <a href="<?php echo base_url().'showbuku/input';?>">Tambah Buku</a>
     <table border = 1>
@@ -33,11 +34,11 @@
 
     <!-- mulai daftar petugas -->
     <h2>Daftar Petugas</h2>
-    <!-- <a href="<?php echo base_url().'showbuku/input';?>">Tambah Buku</a> -->
+    <a href="<?php echo base_url().'showbuku/inputPetugas';?>">Tambah Petugas</a>
     <table border = 1>
       <thead>
         <th>No</th>
-        <th>Kode Petugas</th>
+        <th>Username</th>
         <th>Nama Petugas</th>
         <th>Alamat</th>
         <th>Aksi</th>
@@ -49,7 +50,7 @@
 
       <tr>
         <td><?php echo $no++ ?></td>
-        <td><?php echo $b->kd_petugas ?></td>
+        <td><?php echo $b->username ?></td>
         <td><?php echo $b->nama ?></td>
         <td><?php echo $b->alamat ?></td>
         <td><?php echo anchor('showbuku/editPetugas/'.$b->kd_petugas, ' Ubah ') . '| | ' .anchor('showbuku/deletePetugas/'.$b->kd_petugas, ' Hapus '); ?> </td>

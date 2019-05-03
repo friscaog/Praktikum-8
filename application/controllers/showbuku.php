@@ -4,6 +4,9 @@ class showbuku extends CI_Controller{
   function __construct()
   {
     parent::__construct();
+    if($this->session->userdata('status_login') != "sukses"){
+      redirect('auth');
+    }
     $this->load->model('showbuku_model');
   }
 
@@ -31,18 +34,26 @@ class showbuku extends CI_Controller{
     $this->load->view('inputanggota_view');
   }
 
+  function inputPetugas()
+  {
+    $this->load->view('inputpetugas_view');
+  }
+
 
   // TAMBAH
   function tambah()
   {
-    $this->showbuku_model->input();     
-    redirect ('showbuku');
+    $this->showbuku_model->input();
   }
 
   function tambahAnggota()
   {
     $this->showbuku_model->inputAnggota();     
-    redirect ('showbuku');
+  }
+
+  function tambahPetugas()
+  {
+    $this->showbuku_model->inputPetugas();     
   }
 
   
@@ -56,7 +67,6 @@ class showbuku extends CI_Controller{
     else
     {
       $this->showbuku_model->update($kd_register);
-      redirect('showbuku');
     }
   }
 
@@ -69,7 +79,7 @@ class showbuku extends CI_Controller{
     else
     {
       $this->showbuku_model->updatekdAnggota($kd_anggota);
-      redirect('showbuku');
+      // redirect('showbuku');
     }
   }
 
@@ -82,7 +92,7 @@ class showbuku extends CI_Controller{
     else
     {
       $this->showbuku_model->updatekdPetugas($kd_petugas);
-      redirect('showbuku');
+      // redirect('showbuku');
     }
   }
 
@@ -93,19 +103,19 @@ class showbuku extends CI_Controller{
   function delete($kd_register)
   {
     $this->showbuku_model->delete($kd_register);
-    redirect('showbuku');
+    // redirect('showbuku');
   }
 
   function deleteAnggota($kd_anggota)
   {
     $this->showbuku_model->deletekdAnggota($kd_anggota);
-    redirect('showbuku');
+    // redirect('showbuku');
   }
 
   function deletePetugas($kd_petugas)
   {
     $this->showbuku_model->deletekdPetugas($kd_petugas);
-    redirect('showbuku');
+    // redirect('showbuku');
   }
 
 
@@ -129,7 +139,7 @@ class showbuku extends CI_Controller{
 
     $data2 = array('kd_register'=>$kd_register, 'tgl_pinjam'=>$tgl_pinjam, 'tgl_kembali'=>$tgl_kembali, 'kd_pinjam'=>$kd_pinjam );
     $this->showbuku_model->inputPinjam('detail_pinjam',$data2);     
-    redirect ('showbuku');
+    // redirect ('showbuku');
   }
 
   function editPinjam($kd_register) 
@@ -141,14 +151,14 @@ class showbuku extends CI_Controller{
     else
     {
       $this->showbuku_model->updatePinjam($kd_register);
-      redirect('showbuku');
+      // redirect('showbuku');
     }
   }
 
   function deletePinjam($kd_pinjam)
   {
     $this->showbuku_model->deletePinjam($kd_pinjam);
-    redirect('showbuku');
+    // redirect('showbuku');
   }
 
 }
